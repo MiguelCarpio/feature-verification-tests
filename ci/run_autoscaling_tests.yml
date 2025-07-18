@@ -31,11 +31,11 @@
     - name: "Notify if autoscaling test is skipped by autoscaling status"
       ansible.builtin.debug:
         msg: "Skipping the autoscaling test because OpenStackControlPlane telemetry autoscaling is disabled"
-      when: not autoscaling_enabled
+      when: not autoscaling_enabled | bool
 
     - name: "Skip autoscaling test by autoscaling disabled"
       ansible.builtin.meta: end_play
-      when: not autoscaling_enabled
+      when: not autoscaling_enabled | bool
 
   tasks:
     - block:
